@@ -42,7 +42,7 @@ class ChatNumStatistics:
         初始化embed
         """
         self.embed=discord.Embed(title="聊天句數統計", url="https://youtu.be/dQw4w9WgXcQ?si=0IY_lXd6UNLsaP9l", description="計算中...", color=0xffdfa8)
-        self.embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/890563901501087785/1125676203127345162/1054703568352972840.webp?ex=65d44828&is=65c1d328&hm=96ad33d6fe392d0c8c0b5c14feb35f088c0606bb0889d0a1bc690a56c61c64bc&")
+        self.embed.set_thumbnail(url=self.interaction.user.avatar.url)
         await self.interaction.response.send_message(embed=self.embed)
 
     # 計算統計時間區間
@@ -102,7 +102,7 @@ class ChatNumStatistics:
             return_str += f'{member.mention} : {data[1]}\n' if not(member is None) else f'{data[0]} (已退出) : {data[1]}\n'
         
         if len(self.overflow_channel) != 0:
-            return_str += "`超過訊息上線` "
+            return_str += "`超過訊息上限` "
             for channel in self.overflow_channel:
                 return_str += channel.jump_url + " "
         
