@@ -95,16 +95,8 @@ class ChatNumStatistics:
         """
         回覆使用者計算結果
         """
-        return_str = ''
-        sorted_msg_list = sorted(self.msg_dict.items() , key=lambda x : x[1] , reverse=True)
-        for data in sorted_msg_list:
-            member = self.interaction.guild.get_member(data[0])
-            return_str += f'{member.mention} : {data[1]}\n' if not(member is None) else f'{data[0]} (已退出) : {data[1]}\n'
-        
-        if len(self.overflow_channel) != 0:
-            return_str += "`超過訊息上限` "
-            for channel in self.overflow_channel:
-                return_str += channel.jump_url + " "
+        return_str = self.message_count_result()
+        return_str += self.overflow_channel_result()
         
         self.embed.description = return_str
         if self.frist_msg_time.year != 3000:
@@ -112,3 +104,19 @@ class ChatNumStatistics:
         else:
             self.embed.set_footer(text="[無聊天紀錄]")
         await self.interaction.edit_original_response(embed=self.embed)
+
+    def message_count_result(self):
+        return_str = ""
+        sorted_msg_list = sorted(self.msg_dict.items() , key=lambda x : x[1] , reverse=True)
+        for data in sorted_msg_list:
+            member = self.interaction.guild.get_member(data[0])
+            return_str += f'{member.mention} : {data[1]}\n' if not(member is None) else f'{data[0]} (已退出) : {data[1]}\n'
+        return return_str
+    
+    def overflow_channel_result(self):
+        return_str = ""
+        if len(self.overflow_channel) != 0:
+            return_str += "`超過訊息上限` "
+            for channel in self.overflow_channel:
+                return_str += channel.jump_url + " "
+        return return_str
