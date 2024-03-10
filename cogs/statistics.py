@@ -14,14 +14,14 @@ class Statistics(commands.Cog):
     @app_commands.describe(start = "yyyy-mm-dd (ex : 2024-01-01)")
     @app_commands.describe(end = "yyyy-mm-dd (ex : 2024-01-01)")
     @app_commands.describe(member = "選擇成員 (未選擇則統計所有成員)")
-    @app_commands.describe(limit = "單一頻道最大訊息數量限制 (預設30000)")
+    @app_commands.describe(limit = "單一頻道最大訊息數量限制 (預設50000)")
     async def chat_statistics(
         self , 
         interaction: discord.Interaction ,
         start : Optional[str] = None ,
         end : Optional[str] = None ,
         member : Optional[discord.Member] = None,
-        limit : Optional[int] = 30000
+        limit : Optional[int] = 50000
     ):
         if (member is None):
             stats = ChatNumStatistics(

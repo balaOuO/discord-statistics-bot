@@ -11,7 +11,7 @@ class ChatNumStatistics:
         interaction: discord.Interaction ,
         start : Optional[str] = None ,
         end : Optional[str] = None ,
-        limit : Optional[int] = 30000
+        limit : Optional[int] = 50000
         ) -> None:
             self.interaction = interaction
             self.embed : discord.Embed
@@ -99,6 +99,7 @@ class ChatNumStatistics:
         return_str += self.overflow_channel_result()
         
         self.embed.description = return_str
+        print(return_str) # TODO test code
         if self.frist_msg_time.year != 3000:
             self.embed.set_footer(text=f"[from] : {self.frist_msg_time.date()}\n[to]   : {self.last_msg_time.date()}\n")
         else:

@@ -14,7 +14,7 @@ class PersonalChatNumStatistics(ChatNumStatistics):
         start : Optional[str] = None ,
         end : Optional[str] = None ,
         member : discord.Member = None ,
-        limit : Optional[int] = 30000
+        limit : Optional[int] = 50000
         ) -> None:
             self.interaction = interaction
             self.embed : discord.Embed
