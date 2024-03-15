@@ -9,7 +9,7 @@ class help(commands.Cog):
 
     @app_commands.command(name="阿巴阿巴" , description="機器人使用說明")
     async def abaaba(self , interaction: discord.Interaction):
-        embed=discord.Embed(title="Bot_La使用說明", url="https://youtu.be/dQw4w9WgXcQ?si=0IY_lXd6UNLsaP9l" , color=0x9577cb )
+        embed=discord.Embed(title="Bot_La使用說明", url="https://github.com/balaOuO/discord-statistics-bot" , color=0x9577cb )
         embed.set_footer(text="Developed by balaOuO" , icon_url="https://avatars.githubusercontent.com/u/99466599?v=4")
         embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/890563901501087785/1209412335136149544/e_089.jpg?ex=65e6d402&is=65d45f02&hm=26c3cc71a9663e37d77671ce4861641303b1db69f0f93829719ab8d975dbc082&")
         try:
