@@ -41,7 +41,7 @@ class ChatNumStatistics:
         """
         初始化embed
         """
-        self.embed=discord.Embed(title="聊天句數統計", url="https://youtu.be/dQw4w9WgXcQ?si=0IY_lXd6UNLsaP9l", description="計算中...", color=0xffdfa8)
+        self.embed=discord.Embed(title="聊天句數統計", url="https://github.com/balaOuO/discord-statistics-bot", description="計算中...", color=0xffdfa8)
         self.embed.set_thumbnail(url=self.interaction.user.avatar.url)
         await self.interaction.response.send_message(embed=self.embed)
 
