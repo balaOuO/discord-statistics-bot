@@ -44,6 +44,14 @@ async def reload(ctx : commands.Context, extension):
     await bot.reload_extension(f"cogs.{extension}")
     await ctx.send(f"ReLoaded {extension} done.")
 
+@bot.command()
+async def sync_commands(ctx : commands.Context):
+    if (ctx.author.id != 516971767143858188):
+        await ctx.send("no permissions")
+        return
+    await bot.tree.sync()
+    await ctx.send("Sync done.")
+
 # 一開始bot開機需載入全部程式檔案
 async def load_extensions():
     for filename in os.listdir("./cogs"):
