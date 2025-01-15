@@ -3,6 +3,7 @@ import asyncio
 import discord
 from discord.ext import commands
 from dotenv import load_dotenv
+import argparse
 
 load_dotenv()
 
@@ -59,9 +60,21 @@ async def load_extensions():
             await bot.load_extension(f"cogs.{filename[:-3]}")
 
 async def main():
+    parser = argparse.ArgumentParser(description="Start Discord Statistics Bot")
+    parser.add_argument(
+        "--mode",
+        choices=["dev", "prod"],
+        help="[dev]: Development Mode, [prod]: Production Mode",
+        default="prod"
+    )
+    args = parser.parse_args()
+
     async with bot:
         await load_extensions()
-        await bot.start(os.getenv("TOKEN"))
+        if args.mode == "dev":
+            await bot.start(os.getenv("DEV_TOKEN"))
+        elif args.mode == "prod":
+            await bot.start(os.getenv("TOKEN"))
 
 # 確定執行此py檔才會執行
 if __name__ == "__main__":
