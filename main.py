@@ -1,5 +1,7 @@
 import os
 import asyncio
+from random import randint
+
 import discord
 from discord.ext import commands
 from dotenv import load_dotenv
@@ -17,6 +19,20 @@ async def on_ready():
     print(f"目前登入身份 --> {bot.user}")
     print(f"載入 {len(slash)} 個斜線指令")
     await bot.change_presence(activity=discord.Game(name="西瓜"))
+
+@bot.event
+async def on_message(message: discord.Message):
+    if (message.author == bot.user):
+        return
+
+    send_message = ["叫屁", "幹你娘", "閉嘴"]
+    try:
+        if bot.user in message.mentions:
+            await message.channel.send(send_message[randint(0, len(send_message) - 1)])
+        if ("嗨老虎" in message.content):
+            await message.reply("閉嘴")
+    except Exception as e:
+        print(e)
 
 # 載入指令程式檔案
 @bot.command()
